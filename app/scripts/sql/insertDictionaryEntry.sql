@@ -1,0 +1,1 @@
+INSERT INTO DictionaryEntry(word_id, translation_id, vocab_id) VALUES (:wordId, :translationId, :vocabId);
