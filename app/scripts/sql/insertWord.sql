@@ -1,1 +1,0 @@
-INSERT INTO Word(text) VALUES (:word);

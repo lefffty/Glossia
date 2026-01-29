@@ -1,0 +1,1 @@
+INSERT INTO DictionaryEntryTag(tag_id, entry_id) VALUES (:tagId, :entryId);

@@ -1,1 +1,0 @@
-INSERT INTO DictationEntry(dictation_id, entry_id, word, translation) VALUES (:dictationId, :entryId, :word, :translation);

@@ -1,1 +1,0 @@
-INSERT INTO Dictation(vocab_id, passed_at) VALUES (:vocabId, DATETIME('now'));

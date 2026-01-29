@@ -1,0 +1,1 @@
+INSERT INTO "Translation"(text) VALUES (:translation);

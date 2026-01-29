@@ -1,1 +1,0 @@
-INSERT INTO Vocabulary(name, created_at) VALUES (:vocabName, DATETIME('now'));

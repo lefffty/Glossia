@@ -1,1 +1,0 @@
-INSERT INTO Tag(name) VALUES (:tagName);
