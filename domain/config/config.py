@@ -18,32 +18,8 @@ class DatabaseConfig:
         return self._data['db']['driver']
 
     @property
-    def createDictationEntry(self):
-        script_path = self._data['db']['scripts']['createDictationEntry']
-        with open(script_path, 'r') as fp:
-            return fp.read()
-
-    @property
-    def createDictation(self):
-        script_path = self._data['db']['scripts']['createDictation']
-        with open(script_path, 'r') as fp:
-            return fp.read()
-
-    @property
     def createDictionaryEntry(self):
         script_path = self._data['db']['scripts']['createDictionaryEntry']
-        with open(script_path, 'r') as fp:
-            return fp.read()
-
-    @property
-    def createDictionaryEntryTag(self):
-        script_path = self._data['db']['scripts']['createDictionaryEntryTag']
-        with open(script_path, 'r') as fp:
-            return fp.read()
-
-    @property
-    def createTag(self):
-        script_path = self._data['db']['scripts']['createTag']
         with open(script_path, 'r') as fp:
             return fp.read()
 
@@ -72,18 +48,6 @@ class DatabaseConfig:
             return fp.read()
 
     @property
-    def insertDictionaryEntryTag(self):
-        script_path = self._data['db']['scripts']['insertDictionaryEntryTag']
-        with open(script_path, 'r') as fp:
-            return fp.read()
-
-    @property
-    def insertDictationEntry(self):
-        script_path = self._data['db']['scripts']['insertDictationEntry']
-        with open(script_path, 'r') as fp:
-            return fp.read()
-
-    @property
     def insertVocabulary(self):
         script_path = self._data['db']['scripts']['insertVocabulary']
         with open(script_path, 'r') as fp:
@@ -98,18 +62,6 @@ class DatabaseConfig:
     @property
     def insertTranslation(self):
         script_path = self._data['db']['scripts']['insertTranslation']
-        with open(script_path, 'r') as fp:
-            return fp.read()
-
-    @property
-    def insertTag(self):
-        script_path = self._data['db']['scripts']['insertTag']
-        with open(script_path, 'r') as fp:
-            return fp.read()
-
-    @property
-    def insertDictation(self):
-        script_path = self._data['db']['scripts']['insertDictation']
         with open(script_path, 'r') as fp:
             return fp.read()
 

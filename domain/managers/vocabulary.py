@@ -1,11 +1,7 @@
-from PySide6.QtSql import (
-    QSqlQueryModel,
-)
-
 from .db import DatabaseManager
 
 
-class VocabularyManager(QSqlQueryModel):
+class VocabularyManager:
     def __init__(self, dbManager: DatabaseManager):
         self.dbManager = dbManager
 

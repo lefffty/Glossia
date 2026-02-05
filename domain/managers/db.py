@@ -31,20 +31,8 @@ class DatabaseManager:
         createTranslationQuery = self.config.createTranslation
         self.executeQuery(createTranslationQuery)
 
-        createTagQuery = self.config.createTag
-        self.executeQuery(createTagQuery)
-
-        createDictationQuery = self.config.createDictation
-        self.executeQuery(createDictationQuery)
-
         createDictionaryEntryQuery = self.config.createDictionaryEntry
         self.executeQuery(createDictionaryEntryQuery)
-
-        createDictionaryEntryTagQuery = self.config.createDictionaryEntryTag
-        self.executeQuery(createDictionaryEntryTagQuery)
-
-        createDictationEntryQuery = self.config.createDictationEntry
-        self.executeQuery(createDictationEntryQuery)
 
     def _fetchResults(self, query: QSqlQuery):
         results = []

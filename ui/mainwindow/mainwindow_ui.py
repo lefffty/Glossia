@@ -40,9 +40,9 @@ class Ui_MainWindow(object):
         self.verticalLayoutWidget_2 = QWidget(self.frame)
         self.verticalLayoutWidget_2.setObjectName(u"verticalLayoutWidget_2")
         self.verticalLayoutWidget_2.setGeometry(QRect(0, 0, 231, 391))
-        self.verticalLayout_2 = QVBoxLayout(self.verticalLayoutWidget_2)
-        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.sideBarLayout = QVBoxLayout(self.verticalLayoutWidget_2)
+        self.sideBarLayout.setObjectName(u"sideBarLayout")
+        self.sideBarLayout.setContentsMargins(0, 0, 0, 0)
         self.appLabel = QLabel(self.verticalLayoutWidget_2)
         self.appLabel.setObjectName(u"appLabel")
         font = QFont()
@@ -51,7 +51,7 @@ class Ui_MainWindow(object):
         self.appLabel.setFont(font)
         self.appLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.verticalLayout_2.addWidget(self.appLabel)
+        self.sideBarLayout.addWidget(self.appLabel)
 
         self.createVocabBtn = QPushButton(self.verticalLayoutWidget_2)
         self.createVocabBtn.setObjectName(u"createVocabBtn")
@@ -59,19 +59,19 @@ class Ui_MainWindow(object):
         font1.setPointSize(12)
         self.createVocabBtn.setFont(font1)
 
-        self.verticalLayout_2.addWidget(self.createVocabBtn)
+        self.sideBarLayout.addWidget(self.createVocabBtn)
 
         self.exitBtn = QPushButton(self.verticalLayoutWidget_2)
         self.exitBtn.setObjectName(u"exitBtn")
         self.exitBtn.setFont(font1)
 
-        self.verticalLayout_2.addWidget(self.exitBtn)
+        self.sideBarLayout.addWidget(self.exitBtn)
 
         self.vocabsListWidget = QListWidget(self.verticalLayoutWidget_2)
         self.vocabsListWidget.setObjectName(u"vocabsListWidget")
         self.vocabsListWidget.setFont(font1)
 
-        self.verticalLayout_2.addWidget(self.vocabsListWidget)
+        self.sideBarLayout.addWidget(self.vocabsListWidget)
 
         self.vocabWidget = QWidget(self.centralwidget)
         self.vocabWidget.setObjectName(u"vocabWidget")
@@ -80,9 +80,9 @@ class Ui_MainWindow(object):
         self.verticalLayoutWidget = QWidget(self.vocabWidget)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
         self.verticalLayoutWidget.setGeometry(QRect(10, 10, 451, 381))
-        self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
-        self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.vocabEntriesLayout = QVBoxLayout(self.verticalLayoutWidget)
+        self.vocabEntriesLayout.setObjectName(u"vocabEntriesLayout")
+        self.vocabEntriesLayout.setContentsMargins(0, 0, 0, 0)
         self.vocabNameLabel = QLabel(self.verticalLayoutWidget)
         self.vocabNameLabel.setObjectName(u"vocabNameLabel")
         font2 = QFont()
@@ -90,7 +90,7 @@ class Ui_MainWindow(object):
         self.vocabNameLabel.setFont(font2)
         self.vocabNameLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.verticalLayout.addWidget(self.vocabNameLabel)
+        self.vocabEntriesLayout.addWidget(self.vocabNameLabel)
 
         self.entriesListWidget = QListWidget(self.verticalLayoutWidget)
         self.entriesListWidget.setObjectName(u"entriesListWidget")
@@ -98,7 +98,29 @@ class Ui_MainWindow(object):
         font3.setPointSize(16)
         self.entriesListWidget.setFont(font3)
 
-        self.verticalLayout.addWidget(self.entriesListWidget)
+        self.vocabEntriesLayout.addWidget(self.entriesListWidget)
+
+        self.horizontalLayout_3 = QHBoxLayout()
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.hideWordsBtn = QPushButton(self.verticalLayoutWidget)
+        self.hideWordsBtn.setObjectName(u"hideWordsBtn")
+        self.hideWordsBtn.setFont(font1)
+
+        self.horizontalLayout_3.addWidget(self.hideWordsBtn)
+
+        self.hideTranslationsBtn = QPushButton(self.verticalLayoutWidget)
+        self.hideTranslationsBtn.setObjectName(u"hideTranslationsBtn")
+        self.hideTranslationsBtn.setFont(font1)
+
+        self.horizontalLayout_3.addWidget(self.hideTranslationsBtn)
+
+        self.showPairsBtn = QPushButton(self.verticalLayoutWidget)
+        self.showPairsBtn.setObjectName(u"showPairsBtn")
+        self.showPairsBtn.setFont(font1)
+
+        self.horizontalLayout_3.addWidget(self.showPairsBtn)
+
+        self.vocabEntriesLayout.addLayout(self.horizontalLayout_3)
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
@@ -114,13 +136,17 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addWidget(self.deleteRowBtn)
 
+        self.vocabEntriesLayout.addLayout(self.horizontalLayout)
+
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.deleteVocabBtn = QPushButton(self.verticalLayoutWidget)
         self.deleteVocabBtn.setObjectName(u"deleteVocabBtn")
         self.deleteVocabBtn.setFont(font1)
 
-        self.horizontalLayout.addWidget(self.deleteVocabBtn)
+        self.horizontalLayout_2.addWidget(self.deleteVocabBtn)
 
-        self.verticalLayout.addLayout(self.horizontalLayout)
+        self.vocabEntriesLayout.addLayout(self.horizontalLayout_2)
 
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -139,6 +165,12 @@ class Ui_MainWindow(object):
         self.exitBtn.setText(QCoreApplication.translate(
             "MainWindow", u"Exit", None))
         self.vocabNameLabel.setText("")
+        self.hideWordsBtn.setText(QCoreApplication.translate(
+            "MainWindow", u"Hide words", None))
+        self.hideTranslationsBtn.setText(QCoreApplication.translate(
+            "MainWindow", u"Hide translations", None))
+        self.showPairsBtn.setText(QCoreApplication.translate(
+            "MainWindow", u"Show pairs", None))
         self.addRowBtn.setText(
             QCoreApplication.translate("MainWindow", u"Add", None))
         self.deleteRowBtn.setText(

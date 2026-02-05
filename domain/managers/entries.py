@@ -1,15 +1,9 @@
-from PySide6.QtSql import (
-    QSqlQueryModel,
-)
-
 from .db import DatabaseManager
 from .word import WordTranslationManager
 
 
-class VocabularyEntriesManager(QSqlQueryModel):
+class VocabularyEntriesManager:
     def __init__(self, dbManager: DatabaseManager, parent=None):
-        super().__init__(parent)
-
         self.dbManager = dbManager
         self.wordManager = WordTranslationManager(dbManager)
 

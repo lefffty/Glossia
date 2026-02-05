@@ -7,7 +7,6 @@ from PySide6.QtWidgets import (
     QMessageBox,
     QListWidgetItem,
     QDialog,
-    QFileDialog
 )
 from PySide6.QtCore import (
     QCoreApplication,
@@ -50,6 +49,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.createVocabBtn.clicked.connect(self.onCreateVocabBtnClicked)
         self.deleteVocabBtn.clicked.connect(self.onDeleteVocabBtnClicked)
+        self.showPairsBtn.clicked.connect(self.onShowPairsBtnClicked)
+
+        self.hideTranslationsBtn.clicked.connect(
+            self.onHideTranslationsBtnClicked)
+        self.hideWordsBtn.clicked.connect(self.onHideWordsBtnClicked)
 
         self.vocabsListWidget.itemDoubleClicked.connect(
             self.onVocabDoubleClicked)
@@ -139,8 +143,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         entries = self.vocabEntriesManager.read(params)
 
-        objects = [VocabEntry.from_dict(params).to_string()
-                   for params in entries]
+        self.entries_dto: list[VocabEntry] = [
+            VocabEntry.from_dict(params) for params in entries]
+
+        objects = [entry.to_string() for entry in self.entries_dto]
 
         self.vocabNameLabel.setText(params[':vocabName'])
 
@@ -148,6 +154,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             item = QListWidgetItem(obj)
             item.setData(self.role, obj)
             self.entriesListWidget.addItem(item)
+
+        self.words = [entry.word for entry in self.entries_dto]
+        self.translations = [entry.translation for entry in self.entries_dto]
 
         self.vocabWidget.show()
 
@@ -162,17 +171,27 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             if result:
                 self._getVocabsList()
 
-    def _getWordsAndTranslations(self) -> tuple[list[str], list[str]]:
-        words: list[str] = list(
-            map(lambda idx: self.entriesListWidget.item(idx).text().split(' -')[0],
-                range(self.entriesListWidget.count()))
-        )
-        translations: list[str] = list(
-            map(lambda idx: self.entriesListWidget.item(idx).text().split(' -')[1],
-                range(self.entriesListWidget.count()))
-        )
+    def onHideTranslationsBtnClicked(self):
+        self.entriesListWidget.clear()
+        for translation in self.translations:
+            item = QListWidgetItem(translation)
+            item.setData(self.role, translation)
+            self.entriesListWidget.addItem(item)
 
-        return words, translations
+    def onHideWordsBtnClicked(self):
+        self.entriesListWidget.clear()
+        for word in self.words:
+            item = QListWidgetItem(word)
+            item.setData(self.role, word)
+            self.entriesListWidget.addItem(item)
+
+    def onShowPairsBtnClicked(self):
+        self.entriesListWidget.clear()
+        for word, translation in zip(self.words, self.translations):
+            value = '{} - {}'.format(word, translation)
+            item = QListWidgetItem(value)
+            item.setData(self.role, value)
+            self.entriesListWidget.addItem(item)
 
     def _getVocabsList(self):
         self.vocabsListWidget.clear()
